@@ -6,11 +6,13 @@ Also, this guide is focusing on supervised machine learning problems, but most p
 
 ## Exploratory Data Analysis (EDA)
 
-EDA can be done after data cleaning but we prefer
+EDA can be done after data cleaning but we prefer apply it first to understand the data we will work. Then, while doing data cleaning we can do some EDA to analyze the changes in the data.
 
 ## Data Cleaning and Preprocessing
 
 Data cleaning and preprocessing are crucial steps in any Data Science project to ensure that the data is in a suitable format for analysis and modeling. This step involves handling missing or erroneous data, transforming data into a usable format, and preparing it for further analysis.
+
+It's important to mention that all the transformations done may have to be replicated in the test data and also in production.
 
 ### Handling Missing Data
 
@@ -26,9 +28,59 @@ The techniques usually used to handle missing data are:
 
 There are other advanced techniques like interpolation, matrix factorization or deep learning methods like autoencoders.
 
-## Feature Engineering
+### Dealing with Outliers
 
-Work in progress!
+To ensure that the presence of extreme values does not unduly influence the analysis or modeling process. Outliers are data points that significantly differ from other observations in a dataset and can arise due to various reasons such as measurement errors, natural variation, or rare events. The same carefull mind must be apply here as in missing data.
+
+1. **Removing**. Consider removing outliers if they are likely to be due to data entry errors or do not represent genuine observations. Use domain knowledge to determine a threshold beyond which data points are considered outliers.
+
+2. **Transforming data**. Apply transformations to the data to reduce the impact of outliers without removing them entirely. Common transformations include logarithmic, square root, or Box-Cox transformations.
+
+3. **Winsorization**. Involves replacing extreme outlier values with less extreme values (e.g., replacing values above the 95th percentile with the 95th percentile value).
+
+### Handling Inconsistent Data
+
+Handling inconsistent data involves identifying and rectifying discrepancies or anomalies in the dataset to ensure its reliability and suitability for analysis. Inconsistent data can arise due to various reasons such as human error during data entry, differences in data formats or units, or inconsistencies in data sources.
+
+1. **Standardizing Data Formats**. Ensure consistency in data formats across the dataset. Convert data into a uniform format (e.g., date formatting, numerical representation) to facilitate analysis. Address inconsistencies in text fields (e.g., capitalization, spelling variations) by standardizing text data using text preprocessing techniques.
+
+2. **Resolving Data Entry Errors or Conflicting Information**. Identify and correct data entry mistakes (e.g., typographical errors, duplicate entries) by reviewing and cleaning data records. Resolve conflicts or discrepancies between different data sources or variables.
+
+3. **Handling Duplicates**. Detect and remove duplicate records or entries to avoid redundancy and ensure data integrity.
+
+4. **Dealing with Inconsistent Units or Scales**. Address differences in measurement units or scales within the dataset.
+
+### Feature Engineering
+
+Feature engineering involves creating new features or transforming existing features to make machine learning algorithms work more effectively. Good feature engineering can lead to improved model performance and better insights from the data. It can handle complex data structures and reduce overfitting.
+
+#### Encoding Categorical Variables
+
+Convert categorical variables into numerical representations using techniques like one-hot encoding or label encoding. One-hot encoding is the prefered method over label encoding because the second one may introduce bias based on distance concept. But one-hot enconding can introduce so many new variables and lead to a dimensionality curse problem caused by high cardinality variables. More advanced techniques to address that is to create buckets or use embeddings.
+
+#### Normalization/Scaling
+
+Scale numerical features to a similar range (e.g., using Min-Max scaling or Z-score normalization) to avoid bias in model training caused by diferences in variables magnitudes.
+
+#### Handling Text Data
+
+Text vectorization (Bag-of-Words, TF-IDF) and word embeddings can help to treat text variables.
+
+#### Handling Date and Time Data
+
+Extract relevant components (year, month, day, hour, minute) from date/time data to capture seasonal patterns or time-dependent trends.
+
+### Handling Imbalanced Data
+
+Class imbalance issues happen when the objetive variable has classes that are underrepresenting, this is, when there is less data of one or more classes than the others. This can lead a poor performance of the model because it tends more to tag the data as the majority classes or to not learn enough from the minority classes.
+
+1. **Oversampling**. Increase the number of instances in the minority class by randomly duplicating samples. One way is generating synthetic data with SMOTE (Synthetic Minority Over-sampling Technique) technique based on interpolation between existing minority class instances.
+
+2. **Undersampling**. Reduce the number of instances in the majority class by randomly removing samples.
+
+3. **Class Weight Adjustment**. Modify class weights in classifiers (e.g., logistic regression, SVM) to give higher importance to minority class instances during training.
+
+On the evaluation step it's important to use appropriate metrics like precision, recall and F1-score. If you use cross-validation you have to perform stratified cross-validation instead.
 
 ## Modeling
 
