@@ -8,6 +8,8 @@ Also, this guide is focusing on supervised machine learning problems, but most p
 
 EDA can be done after data cleaning but we prefer apply it first to understand the data we will work. Then, while doing data cleaning we can do some EDA to analyze the changes in the data.
 
+Work in progress!
+
 ## Data Cleaning and Preprocessing
 
 Data cleaning and preprocessing are crucial steps in any Data Science project to ensure that the data is in a suitable format for analysis and modeling. This step involves handling missing or erroneous data, transforming data into a usable format, and preparing it for further analysis.
@@ -81,6 +83,10 @@ Class imbalance issues happen when the objetive variable has classes that are un
 3. **Class Weight Adjustment**. Modify class weights in classifiers (e.g., logistic regression, SVM) to give higher importance to minority class instances during training.
 
 On the evaluation step it's important to use appropriate metrics like precision, recall and F1-score. If you use cross-validation you have to perform stratified cross-validation instead.
+
+### Feature Importance
+
+Usually it could be interesting to know the relevance of each variable when predecting the outcome. The relationship between dependent and independent variables can be calculated with Pearson's correlation coefficient as we describe in EDA section. But another metric we can analyze is the feature importance. We can train a simple random forest model and it natively calculates this metric. Variables with a very low feature importance in small datasets (few features) or simply a low feature importance in large datasets can be deleted from the modeling because we can assume they are only noise.
 
 ## Modeling
 
