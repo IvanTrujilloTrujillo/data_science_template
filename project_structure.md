@@ -6,9 +6,25 @@ Also, this guide is focusing on supervised machine learning problems, but most p
 
 ## Exploratory Data Analysis (EDA)
 
+Exploratory Data Analysis (EDA) is a crucial initial step in any data science project. It involves analyzing and summarizing the main characteristics of a dataset, often using statistical graphics and other data visualization methods.
+
 EDA can be done after data cleaning but we prefer apply it first to understand the data we will work. Then, while doing data cleaning we can do some EDA to analyze the changes in the data.
 
-Work in progress!
+### Understanding the Data
+
+Begin by obtaining the dataset and understanding its structure. Identify the format and the size (number of rows and columns). Review the data description or metadata to understand what each column represents.
+
+### Statistical Summary
+
+Calculate basic summary statistics such as mean, median, mode, minimum, maximum, and standard deviation for numerical columns. For categorical variables, determine frequency counts.
+
+### Univariate Analysis
+
+Analyze individual variables to understand their distribution and characteristics. For numerical variables, use histograms, box plots, or density plots to visualize the distribution. For categorical variables, create bar charts or pie charts to show the frequency of each category.
+
+### Bivariate and Multivariate Analysis
+
+Explore relationships between variables. Use scatter plots, pair plots (for smaller datasets), or correlation matrices to identify patterns and dependencies between numerical variables. For categorical vs. numerical variable relationships, box plots or violin plots can be useful. Analyze correlations between variables using correlation coefficients like Pearson, Spearman, or Kendall.
 
 ## Data Cleaning and Preprocessing
 
