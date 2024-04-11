@@ -56,6 +56,8 @@ To ensure that the presence of extreme values does not unduly influence the anal
 
 3. **Winsorization**. Involves replacing extreme outlier values with less extreme values (e.g., replacing values above the 95th percentile with the 95th percentile value).
 
+In practice, removing outliers leads a worst model performace so it isn't an advisable approach unless the outliers are really error data. This is because in test dataset and production data would have outliers.
+
 ### Handling Inconsistent Data
 
 Handling inconsistent data involves identifying and rectifying discrepancies or anomalies in the dataset to ensure its reliability and suitability for analysis. Inconsistent data can arise due to various reasons such as human error during data entry, differences in data formats or units, or inconsistencies in data sources.
@@ -88,6 +90,10 @@ Text vectorization (Bag-of-Words, TF-IDF) and word embeddings can help to treat 
 
 Extract relevant components (year, month, day, hour, minute) from date/time data to capture seasonal patterns or time-dependent trends.
 
+#### Creating new variables
+
+Sometimes can be helpfull to create new variables from the existing ones. This could help the model to better capture the intrinsic relationships between the variables. 
+
 ### Handling Imbalanced Data
 
 Class imbalance issues happen when the objetive variable has classes that are underrepresenting, this is, when there is less data of one or more classes than the others. This can lead a poor performance of the model because it tends more to tag the data as the majority classes or to not learn enough from the minority classes.
@@ -103,6 +109,8 @@ On the evaluation step it's important to use appropriate metrics like precision,
 ### Feature Importance
 
 Usually it could be interesting to know the relevance of each variable when predecting the outcome. The relationship between dependent and independent variables can be calculated with Pearson's correlation coefficient as we describe in EDA section. But another metric we can analyze is the feature importance. We can train a simple random forest model and it natively calculates this metric. Variables with a very low feature importance in small datasets (few features) or simply a low feature importance in large datasets can be deleted from the modeling because we can assume they are only noise.
+
+In practice, it's not an advisable approach to remove low feature importace or low correlation variables because, at the end of the day, they give some helpfull information (mostly to complex algorithms). 
 
 ## Modeling
 
